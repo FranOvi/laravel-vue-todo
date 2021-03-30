@@ -1,12 +1,14 @@
 <template>
   <div>
     <div v-for="task in allTasks" v-bind:key="task.id" class="todo-item">
-      <input type="checkbox" :checked="task.is_completed" :value="task.is_completed" v-on:change="markComplete(task)">
-      <div v-bind:class="{'is-completed':task.is_completed}">
+      <input type="checkbox" :id="`completed-${task.id}`" name="completed" :checked="task.is_completed" :value="task.is_completed" v-on:change="markComplete(task)">
+      <label :for="`completed-${task.id}`" v-bind:class="{'is-completed':task.is_completed}" class="todo-text">
         {{task.task}}
-      </div>
+      </label>
       <button class="todo-button" @click="deleteTask(task)">Delete</button>
     </div>
+
+    <span>You have {{pendingCount}} pending tasks</span>
   </div>
 </template>
 
@@ -16,9 +18,15 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'TaskList',
 
-  computed: mapGetters([
-    'allTasks'
-  ]),
+  computed: {
+    ...mapGetters([
+      'allTasks'
+    ]),
+
+    pendingCount: function() {
+      return this.allTasks.filter((t) => !t.is_completed).length;
+    }
+  },
 
   methods: {
     ...mapActions([
@@ -41,9 +49,12 @@ export default {
 
 <style scoped>
   .todo-item {
-    background: #f3f3f5;
-    padding: 20px 10px 20px 10px;
+    padding: 15px 10px 20px 15px;
     display: flex;
+  }
+
+  .todo-text {
+    padding-left: 8px;
   }
 
   .todo-button{

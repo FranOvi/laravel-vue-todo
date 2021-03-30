@@ -8,12 +8,15 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        </style>
     </head>
     <body class="antialiased">
-        <div class="container mx-auto">
-            <div id="app">
-                <app></app>
-            </div>
+        <div id="app">
+            <app></app>
         </div>
         <script src="{{ mix('js/app.js') }}"> </script>
     </body>

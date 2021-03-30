@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function get()
     {
-        $tasks = Task::get();
+        $tasks = Task::latest()->get();
         return response()->json($tasks, 200);
     }
 
