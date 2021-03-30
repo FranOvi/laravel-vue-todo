@@ -11,8 +11,13 @@
     },
     "devDependencies": {
         "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
+        "laravel-mix": "^6.0.13",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "webpack-cli": "^4.6.0"
+    },
+    "dependencies": {
+        "vue": "^2.6.12",
+        "webpack": "^5.28.0"
     }
 }
